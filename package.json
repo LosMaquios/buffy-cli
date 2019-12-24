@@ -1,0 +1,12 @@
+{
+  "name": "buffy-cli",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:LosMaquios/buffy-cli.git",
+  "author": "Camilo Rodríguez <aeroxmotion@hotmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}
