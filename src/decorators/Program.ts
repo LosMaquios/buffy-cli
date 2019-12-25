@@ -1,3 +1,5 @@
+import { parseInput, ProgramInput } from '../parser'
+
 interface ProgramOptions {
   headerTemplate: string
   footerTemplate: string
@@ -14,7 +16,9 @@ function Program (options?: Partial<ProgramOptions>): ClassDecorator {
   options = Object.assign({}, defaultOptions, options)
 
   return target => {
-
+    target.prototype.$init = (input: ProgramInput) => {
+      const parsed = parseInput(input)
+    }
   }
 }
 

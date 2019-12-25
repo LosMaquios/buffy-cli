@@ -29,8 +29,8 @@ function Cmd (options?: Partial<CommandOptions>): MethodDecorator {
 
     commandsMap.set(commandName, {
       argsInfo: Reflect.getOwnMetadata(ARGUMENTS_METADATA_SYMBOL, target, propertyKey),
-      exec (...args) {
-        (execCommand as any).call(target, ...args)
+      exec (ctx, ...args) {
+        (execCommand as any).call(ctx, ...args)
       }
     })
   }
