@@ -2,8 +2,10 @@ interface OptionOptions {
   needValue: boolean
 }
 
-function Opt (name: string, options?: Partial<OptionOptions>) {
+function Opt (name: string, options?: Partial<OptionOptions>): ParameterDecorator {
+  return () => {
 
+  }
 }
 
 export {

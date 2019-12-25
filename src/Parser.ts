@@ -18,7 +18,7 @@ function getOptionName (option: string) {
   return option.replace(OPTION_TOKEN_REGEX, '')
 }
 
-function parseInput (input: ProgramInput) {
+function parseInput (input: ProgramInput, strict = false) {
   const parsed: ProgramInputParsed = {
     cmd: input[0],
     args: [],
@@ -32,6 +32,10 @@ function parseInput (input: ProgramInput) {
       const current = input[i]
 
       if (!current.startsWith(OPTION_TOKEN)) {
+        if (strict && parsed.opts.length) {
+          throw new Error('[strict parsing] arguments goes before options')
+        }
+
         parsed.args.push(current)
       } else {
         const next = input[i + 1]
