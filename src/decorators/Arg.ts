@@ -6,6 +6,11 @@ interface ArgumentOptions {
   required: boolean
 }
 
+interface ArgumentInfo extends ArgumentOptions {
+  name: string
+  index: number
+}
+
 const defaultOptions: ArgumentOptions = {
   type: 'string',
   description: '',
@@ -16,14 +21,15 @@ function Arg (name: string, options?: ArgumentOptions): ParameterDecorator {
   options = Object.assign({}, defaultOptions, options)
 
   return (target, propertyKey, parameterIndex) => {
-    const argsInfo: (ArgumentOptions & { name: string })[] = Reflect
+    const argsInfo: ArgumentInfo[] = Reflect
       .getOwnMetadata(ARGUMENTS_METADATA_SYMBOL, target, propertyKey) ?? []
 
     // Set merged options
-    argsInfo[parameterIndex] = {
+    argsInfo.push({
       name,
+      index: parameterIndex,
       ...options
-    }
+    })
 
     Reflect.defineMetadata(ARGUMENTS_METADATA_SYMBOL, argsInfo, target, propertyKey)
   }
@@ -32,6 +38,7 @@ function Arg (name: string, options?: ArgumentOptions): ParameterDecorator {
 export {
   // Types
   ArgumentOptions,
+  ArgumentInfo,
 
   // API
   Arg

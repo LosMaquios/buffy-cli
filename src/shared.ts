@@ -1,20 +1,9 @@
-/**
- *
- */
-const COMMANDS_METADATA_SYMBOL = Symbol('Cmd.Metadata')
+interface ProgramMetadata {
 
-/**
- *
- */
-const ARGUMENTS_METADATA_SYMBOL = Symbol('Arg.Metadata')
+}
 
-/**
- *
- */
-const OPTIONS_METADATA_SYMBOL = Symbol('Opt.Metadata')
+const PROGRAM_METADATA_SYMBOL = Symbol('BufflyCLI.Program.Metadata')
 
 export {
-  COMMANDS_METADATA_SYMBOL,
-  ARGUMENTS_METADATA_SYMBOL,
-  OPTIONS_METADATA_SYMBOL
+  PROGRAM_METADATA_SYMBOL
 }

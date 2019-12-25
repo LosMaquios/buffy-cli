@@ -2,8 +2,14 @@ interface OptionOptions {
   needValue: boolean
 }
 
+const defaultOptions: OptionOptions = {
+  needValue: false
+}
+
 function Opt (name: string, options?: Partial<OptionOptions>): ParameterDecorator {
-  return () => {
+  options = Object.assign({}, defaultOptions, options)
+
+  return (target, propertyKey, parameterIndex) => {
 
   }
 }

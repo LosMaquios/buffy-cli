@@ -18,7 +18,7 @@ function getOptionName (option: string) {
   return option.replace(OPTION_TOKEN_REGEX, '')
 }
 
-function parseInput (input: ProgramInput, strict = false) {
+function parseInput (input: ProgramInput, strict: boolean) {
   const parsed: ProgramInputParsed = {
     cmd: input[0],
     args: [],
